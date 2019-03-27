@@ -6,4 +6,6 @@
     <string name="finishTxt">Finish</string>
     <string name="moneyTotalDesc">Shows money</string>
     <string name="dollarBtnDesc">AddCash</string>
+    <string name="appTitle">Dollar Up</string>
+    <string name="Button1">Level 1</string>
 </resources>
