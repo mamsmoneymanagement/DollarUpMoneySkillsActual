@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">DollarUpMoneySkills</string>
+    <string name="title_activity_level_prompt">LevelPrompt</string>
+    <string name="DefaultQ">Question debugging text.</string>
+    <string name="debugAudioBtnTxt">playSound</string>
+    <string name="finishTxt">Finish</string>
+    <string name="moneyTotalDesc">Shows money</string>
+    <string name="dollarBtnDesc">AddCash</string>
 </resources>
