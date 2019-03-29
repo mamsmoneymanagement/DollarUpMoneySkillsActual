@@ -6,100 +6,69 @@
     android:layout_height="match_parent"
     tools:context=".LevelPrompt">
 
-    <TextView
-        android:id="@+id/qMainTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="175dp"
-        android:layout_marginLeft="175dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="175dp"
-        android:layout_marginRight="175dp"
-        android:layout_marginBottom="696dp"
-        android:text="@string/DefaultQ"
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <ImageButton
-        android:id="@+id/audioBtn"
-        android:layout_width="45dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="35dp"
-        android:layout_marginEnd="350dp"
-        android:layout_marginRight="350dp"
-        android:layout_marginBottom="655dp"
-        android:contentDescription="@string/debugAudioBtnTxt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
+        <ImageButton
+            android:id="@+id/audioBtn"
+            android:layout_width="45dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="350dp"
+            android:layout_marginRight="350dp"
+            android:layout_marginBottom="0dp"
+            android:contentDescription="@string/debugAudioBtnTxt"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
 
-    <ImageView
-        android:id="@+id/itemImg"
-        android:layout_width="188dp"
-        android:layout_height="131dp"
-        android:layout_marginStart="71dp"
-        android:layout_marginLeft="71dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="133dp"
-        android:layout_marginRight="133dp"
-        android:layout_marginBottom="527dp"
-        android:contentDescription="@string/debugAudioBtnTxt"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/audioBtn"
-        app:layout_constraintTop_toBottomOf="@+id/qMainTxt"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[2]" />
 
-    <Button
-        android:id="@+id/finishBtn"
-        android:layout_width="187dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="113dp"
-        android:layout_marginLeft="113dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="113dp"
-        android:layout_marginRight="113dp"
-        android:layout_marginBottom="9dp"
-        android:text="@string/finishTxt"
-        app:layout_constraintBottom_toTopOf="@+id/moneyImg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/itemImg" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Use your bills to buy the item"
+            android:textSize="30dp" />
 
-    <ImageView
-        android:id="@+id/moneyImg"
-        android:layout_width="191dp"
-        android:layout_height="148dp"
-        android:layout_marginStart="113dp"
-        android:layout_marginLeft="113dp"
-        android:layout_marginTop="9dp"
-        android:layout_marginEnd="113dp"
-        android:layout_marginRight="113dp"
-        android:contentDescription="@string/moneyTotalDesc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/finishBtn"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[8]" />
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginVertical="15dp"
+            app:srcCompat="@drawable/ic_launcher_background" />
 
-    <ImageButton
-        android:id="@+id/dollarBtn"
-        android:layout_width="101dp"
-        android:layout_height="126dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginLeft="61dp"
-        android:layout_marginTop="15dp"
-        android:contentDescription="@string/dollarBtnDesc"
-        android:onClick="clickable"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/moneyImg"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="15dp"
+            android:text="Finish Paying" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:layout_marginVertical="15dp"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="15dp"
+            android:orientation="horizontal">
+
             <ImageButton
                 android:id="@+id/imageButton"
                 android:layout_width="wrap_content"
@@ -107,39 +76,32 @@
                 android:layout_weight="1"
                 app:srcCompat="@mipmap/ic_launcher" />
 
-    <ImageButton
-        android:id="@+id/dollarBtn2"
-        android:layout_width="101dp"
-        android:layout_height="126dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/dollarBtnDesc"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dollarBtn"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/ic_launcher" />
+        </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/dollarBtn3"
-        android:layout_width="101dp"
-        android:layout_height="126dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:contentDescription="@string/dollarBtnDesc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/moneyImg"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/dollarBtn4"
-        android:layout_width="101dp"
-        android:layout_height="126dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:contentDescription="@string/dollarBtnDesc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dollarBtn3"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/ic_launcher" />
+
+            <ImageButton
+                android:id="@+id/imageButton5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@mipmap/ic_launcher" />
+        </LinearLayout>
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

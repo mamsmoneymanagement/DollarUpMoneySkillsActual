@@ -15,24 +15,10 @@ public class LevelPrompt extends AppCompatActivity {
         setContentView(R.layout.activity_level_prompt);
     }
 
-    public void clickable(View v)
-    {
-        AlertDialog.Builder _builder = new AlertDialog.Builder(LevelPrompt.this);
-        _builder.setMessage(R.string.dialogPaymentQ).setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which)
-            {
-
-            }
-        }).setNegativeButton(R.string.CANCEL, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which)
-            {
-
-            }
-        });
-        _builder.create();
 
 
-    }
+
+
 
 
 
