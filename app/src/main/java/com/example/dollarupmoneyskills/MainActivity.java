@@ -12,6 +12,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
-
+    public void goToLevelOne(View view){
+        Intent intent = new Intent(this, LevelOneItems.class);
+        startActivity(intent);
+    }
+    public void goToSettings(View view){
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
 }
