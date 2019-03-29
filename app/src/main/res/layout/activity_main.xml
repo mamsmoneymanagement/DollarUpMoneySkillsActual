@@ -8,17 +8,21 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
-            android:textSize="80dp"
             android:gravity="center"
-            android:text="Dollar Up" />
+            android:text="@string/appTitle"
+            android:textSize="80sp" />
 
         <Button
             android:id="@+id/LevelOne"
@@ -27,37 +31,39 @@
             android:layout_marginHorizontal="40dp"
             android:layout_marginBottom="40dp"
             android:onClick="goToLevelOne"
-            android:text="Level 1" />
+            android:text="@string/lvl1Txt" tools:targetApi="o"/>
 
         <Button
             android:id="@+id/LevelTwo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
             android:layout_marginHorizontal="40dp"
-            android:text="Level 2" />
+            android:layout_marginBottom="40dp"
+            android:text="@string/lvl2Txt" tools:targetApi="o"/>
 
         <Button
             android:id="@+id/LevelThree"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
             android:layout_marginHorizontal="40dp"
-            android:text="Level 3" />
+            android:layout_marginBottom="40dp"
+            android:text="@string/lvl3Txt" tools:targetApi="o"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center_horizontal|top"
             android:orientation="horizontal">
 
             <ImageButton
                 android:id="@+id/settings"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginHorizontal="100dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/settingsBtnDesc"
                 android:onClick="goToSettings"
-                app:srcCompat="@android:drawable/ic_menu_manage" />
+                app:srcCompat="@android:drawable/ic_menu_manage" tools:targetApi="o"/>
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

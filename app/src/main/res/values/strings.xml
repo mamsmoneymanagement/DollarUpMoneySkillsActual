@@ -11,4 +11,13 @@
     <string name="dialogPaymentQ">Are you sure you want to pay with this bill?</string>
     <string name="OK">OK</string>
     <string name="CANCEL">Cancel</string>
+    <string name="DefaultQText">Use your bills to buy the item</string>
+    <string name="FinishTxt">Finish Paying</string>
+    <string name="lvl1Txt">Level 1</string>
+    <string name="lvl2Txt">Level 2</string>
+    <string name="lvl3Txt">Level 3</string>
+    <string name="settingsBtnDesc">goto Settings</string>
+    <string name="settingsTxt">Settings</string>
+    <string name="chooseItemTxt">Choose an item to buy</string>
+    <string name="itemDefault">anItem</string>
 </resources>
