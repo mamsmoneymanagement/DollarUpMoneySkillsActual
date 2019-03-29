@@ -9,4 +9,6 @@
     <string name="appTitle">Dollar Up</string>
     <string name="Button1">Level 1</string>
     <string name="settingsTitle">Settings</string>
+    <string name="soundTitle">Sound</string>
+    <string name="ttSpeech">Text to Speech</string>
 </resources>
