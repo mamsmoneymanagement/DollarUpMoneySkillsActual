@@ -17,7 +17,7 @@
         android:layout_marginRight="38dp"
         android:layout_marginBottom="631dp"
         android:gravity="center"
-        android:text="@string/settingsTitle"
+        android:text="@string/settingsTxt"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
