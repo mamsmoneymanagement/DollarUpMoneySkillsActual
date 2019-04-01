@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="100dp"
                 android:layout_weight="1"
-                android:contentDescription="@string/settingsBtnDesc"
+                android:contentDescription="@string/GenericNull"
                 android:onClick="goToSettings"
                 app:srcCompat="@android:drawable/ic_menu_manage" />
         </LinearLayout>
