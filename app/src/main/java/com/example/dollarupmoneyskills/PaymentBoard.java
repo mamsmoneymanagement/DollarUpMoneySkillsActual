@@ -5,7 +5,7 @@ public class PaymentBoard {
     int numFives;
     int numTens;
     int numTwenties;
-
+    //constructor
     public PaymentBoard(){
         this.numOnes = 0;
         this.numFives = 0;
