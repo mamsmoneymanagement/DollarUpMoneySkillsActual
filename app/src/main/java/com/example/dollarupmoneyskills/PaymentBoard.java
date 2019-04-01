@@ -1,10 +1,10 @@
 package com.example.dollarupmoneyskills;
 
 public class PaymentBoard {
-    int numOnes;
-    int numFives;
-    int numTens;
-    int numTwenties;
+    private int numOnes;
+    private int numFives;
+    private int numTens;
+    private int numTwenties;
     //constructor
     public PaymentBoard(){
         this.numOnes = 0;
