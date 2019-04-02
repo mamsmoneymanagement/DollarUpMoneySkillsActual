@@ -11,4 +11,12 @@
     <string name="settingsTitle">Settings</string>
     <string name="soundTitle">Sound</string>
     <string name="ttSpeech">Text to Speech</string>
+    <string name="itemDefault">\"null\"</string>
+    <string name="chooseItemTxt">Choose what to buy:</string>
+    <string name="FinishTxt">Finish</string>
+    <string name="lvl1Txt">Level 1</string>
+    <string name="lvl2Txt">Level 2</string>
+    <string name="lvl3Txt">Level 3</string>
+    <string name="GenericNull">\"null\"</string>
+    <string name="DefaultQText">Choose what bills to use to buy the item:</string>
 </resources>
