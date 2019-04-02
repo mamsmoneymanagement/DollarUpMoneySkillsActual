@@ -24,11 +24,11 @@ public class PaymentBoard {
         this.numFives += 1;
     }
 
-    public void addTens(){
+    public void addTen(){
         this.numTens += 1;
     }
 
-    public void addTwenties(){
+    public void addTwenty(){
         this.numTwenties += 1;
     }
 
