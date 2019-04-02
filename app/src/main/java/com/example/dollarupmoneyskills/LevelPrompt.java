@@ -74,4 +74,16 @@ public class LevelPrompt extends AppCompatActivity {
                     }
                 }).create().show();
     }
+    public void finishPayment(View view){
+        new AlertDialog.Builder(this)
+                .setTitle("Confirm Choice")
+                .setMessage("You have payed with $"+board.getAmount()+". Would you like to continue?")
+                .setNegativeButton("No", null)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).create().show();
+    }
 }
