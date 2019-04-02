@@ -17,6 +17,7 @@ public class LevelPrompt extends AppCompatActivity {
         setContentView(R.layout.activity_level_prompt);
         board = new PaymentBoard();
     }
+    //Dialog Box
     public void dialog(View view){
         new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
