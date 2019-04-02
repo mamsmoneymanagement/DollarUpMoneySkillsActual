@@ -22,8 +22,16 @@ public class LevelPrompt extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
-                .setNegativeButton("No", null)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Remove", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+                        board.removeOne();
+                        TextView view = findViewById(R.id.numOnes);
+                        view.setText(""+board.getNumOnes());
+                    }
+                })
+                .setNeutralButton("Close", null)
+                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         board.addOne();
@@ -36,8 +44,16 @@ public class LevelPrompt extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
-                .setNegativeButton("No", null)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Remove", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        board.removeFive();
+                        TextView view = findViewById(R.id.numFives);
+                        view.setText(""+board.getNumFives());
+                    }
+                })
+                .setNeutralButton("Close", null)
+                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         board.addFive();
@@ -50,8 +66,16 @@ public class LevelPrompt extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
-                .setNegativeButton("No", null)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Remove", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        board.removeTen();
+                        TextView view = findViewById(R.id.numTens);
+                        view.setText(""+board.getNumTens());
+                    }
+                })
+                .setNeutralButton("Close", null)
+                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         board.addTen();
@@ -64,8 +88,16 @@ public class LevelPrompt extends AppCompatActivity {
         new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
-                .setNegativeButton("No", null)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Remove", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        board.removeTwenty();
+                        TextView view = findViewById(R.id.numTwenties);
+                        view.setText(""+board.getNumTwenties());
+                    }
+                })
+                .setNeutralButton("Close", null)
+                .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         board.addTwenty();

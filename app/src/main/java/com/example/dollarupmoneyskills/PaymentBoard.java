@@ -32,6 +32,22 @@ public class PaymentBoard {
         this.numTwenties += 1;
     }
 
+    public void removeOne(){
+        this.numOnes -= 1;
+    }
+
+    public void removeFive(){
+        this.numFives -= 1;
+    }
+
+    public void removeTen(){
+        this.numTens -= 1;
+    }
+
+    public void removeTwenty(){
+        this.numTwenties -= 1;
+    }
+
     public int getNumOnes(){
         return this.numOnes;
     }
