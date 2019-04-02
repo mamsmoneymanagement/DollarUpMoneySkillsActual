@@ -7,13 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class LevelPrompt extends AppCompatActivity {
-    //for commmt
+    private PaymentBoard board;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_prompt);
+        board = new PaymentBoard();
     }
     public void dialog(View view){
         new AlertDialog.Builder(this)
@@ -23,8 +25,9 @@ public class LevelPrompt extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
-
+                        board.addOne();
+                        TextView view = findViewById(R.id.textView4);
+                        view.setText(""+board.getNumOnes());
                     }
                 }).create().show();
     }
