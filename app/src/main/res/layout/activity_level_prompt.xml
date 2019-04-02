@@ -39,23 +39,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Use your bills to buy the item"
-            android:textSize="30dp" />
+            android:text="@string/DefaultQText"
+            android:textSize="30sp" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="53dp"
             android:layout_marginVertical="15dp"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            android:contentDescription="@string/itemDefault"
+            app:srcCompat="@drawable/ic_launcher_background" tools:targetApi="o"/>
 
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="15dp"
-            android:text="Finish Paying"
-            android:onClick="finishPayment"/>
+            android:onClick="finishPayment"
+            android:text="@string/FinishTxt" tools:targetApi="o"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,14 +68,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="@string/GenericNull" />
 
             <TextView
                 android:id="@+id/numFives"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="@string/GenericNull" />
         </LinearLayout>
 
         <LinearLayout
@@ -87,36 +88,38 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="@string/GenericNull" />
 
             <TextView
                 android:id="@+id/numTwenties"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="TextView" />
+                android:text="@string/GenericNull" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="15dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal" tools:targetApi="o">
 
             <ImageButton
                 android:id="@+id/addOne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="addOne"
                 android:layout_weight="1"
+                android:contentDescription="@string/dollarBtnDesc"
+                android:onClick="addOne"
                 app:srcCompat="@mipmap/ic_launcher" />
 
             <ImageButton
                 android:id="@+id/addFive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="addFive"
                 android:layout_weight="1"
+                android:contentDescription="@string/dollarBtnDesc"
+                android:onClick="addFive"
                 app:srcCompat="@mipmap/ic_launcher" />
         </LinearLayout>
 
@@ -129,16 +132,18 @@
                 android:id="@+id/addTen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="addTen"
                 android:layout_weight="1"
+                android:contentDescription="@string/dollarBtnDesc"
+                android:onClick="addTen"
                 app:srcCompat="@mipmap/ic_launcher" />
 
             <ImageButton
                 android:id="@+id/addTwenty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="addTwenty"
                 android:layout_weight="1"
+                android:contentDescription="@string/dollarBtnDesc"
+                android:onClick="addTwenty"
                 app:srcCompat="@mipmap/ic_launcher" />
         </LinearLayout>
     </LinearLayout>
