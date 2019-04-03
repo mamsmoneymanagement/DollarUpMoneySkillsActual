@@ -43,6 +43,7 @@
         android:id="@+id/settingsSoundBtn"
         android:layout_width="109dp"
         android:layout_height="38dp"
+        android:layout_marginTop="140dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_weight="1"
@@ -51,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="@+id/soundTitle"
         app:layout_constraintHorizontal_bias="0.972"
         app:layout_constraintStart_toStartOf="@+id/soundTitle"
-        tools:layout_editor_absoluteY="140dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/ttSpeech"
@@ -61,6 +62,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_weight="1"
+        android:gravity="center_vertical"
         android:text="@string/ttSpeech"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.223"
@@ -91,6 +93,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="140dp"
         android:layout_weight="1"
+        android:gravity="center_vertical"
         android:text="@string/soundTitle"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.223"
