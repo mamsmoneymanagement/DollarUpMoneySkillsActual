@@ -16,31 +16,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/audioBtn"
-            android:layout_width="45dp"
-            android:layout_height="41dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="350dp"
-            android:layout_marginRight="350dp"
-            android:layout_marginBottom="0dp"
-            android:contentDescription="@string/debugAudioBtnTxt"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_lock_silent_mode_off" />
-
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/DefaultQText"
-            android:textSize="30sp" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -57,6 +32,12 @@
             android:layout_marginVertical="15dp"
             android:onClick="finishPayment"
             android:text="@string/FinishTxt" tools:targetApi="o"/>
+
+        <LinearLayout
+            android:id="@+id/moneyBoard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"/>
 
         <LinearLayout
             android:layout_width="match_parent"

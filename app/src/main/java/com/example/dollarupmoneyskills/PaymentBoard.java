@@ -33,19 +33,27 @@ public class PaymentBoard {
     }
 
     public void removeOne(){
-        this.numOnes -= 1;
+        if(numOnes > 0) {
+            this.numOnes -= 1;
+        }
     }
 
     public void removeFive(){
-        this.numFives -= 1;
+        if(numFives > 0) {
+            this.numFives -= 1;
+        }
     }
 
     public void removeTen(){
-        this.numTens -= 1;
+        if(numTens > 0) {
+            this.numTens -= 1;
+        }
     }
 
     public void removeTwenty(){
-        this.numTwenties -= 1;
+        if(numTwenties > 0) {
+            this.numTwenties -= 1;
+        }
     }
 
     public int getNumOnes(){
