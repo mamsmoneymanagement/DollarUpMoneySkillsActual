@@ -49,7 +49,7 @@
         android:layout_marginBottom="8dp"
         android:layout_weight="1"
         android:text="@string/GenericNull"
-        android:textSize="10sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@+id/settingsTTSBtn"
         app:layout_constraintEnd_toEndOf="@+id/soundTitle"
         app:layout_constraintHorizontal_bias="0.972"
