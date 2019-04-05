@@ -7,13 +7,18 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+
+        android:id="@+id/mainactivity"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#B5DCB3"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/textView"
@@ -22,7 +27,16 @@
             android:layout_marginBottom="50dp"
             android:gravity="center"
             android:text="@string/appTitle"
+            android:textColor="#F3F3F3"
             android:textSize="80sp" />
+
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:padding="40dp"/>
 
         <Button
             android:id="@+id/LevelOne"
@@ -69,5 +83,6 @@
                 app:srcCompat="@android:drawable/ic_menu_manage"
                 tools:targetApi="o" />
         </LinearLayout>
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
