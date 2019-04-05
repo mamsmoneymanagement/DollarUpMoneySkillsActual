@@ -7,6 +7,9 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+
+        android:background="#B5DCB3"
+        android:id="@+id/mainactivity"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
@@ -17,12 +20,14 @@
 
         <TextView
             android:id="@+id/textView"
+            android:textColor="#472828"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="50dp"
             android:gravity="center"
             android:text="@string/appTitle"
             android:textSize="80sp" />
+
 
         <Button
             android:id="@+id/LevelOne"
