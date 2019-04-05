@@ -33,11 +33,17 @@
             android:onClick="finishPayment"
             android:text="@string/FinishTxt" tools:targetApi="o"/>
 
-        <LinearLayout
+        <HorizontalScrollView
             android:id="@+id/moneyBoard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"/>
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/scrollLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+        </HorizontalScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -92,7 +98,7 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/dollarBtnDesc"
                 android:onClick="addOne"
-                app:srcCompat="@mipmap/ic_launcher" />
+                app:srcCompat="@drawable/onedollarbutton" />
 
             <ImageButton
                 android:id="@+id/addFive"
@@ -101,7 +107,7 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/dollarBtnDesc"
                 android:onClick="addFive"
-                app:srcCompat="@mipmap/ic_launcher" />
+                app:srcCompat="@drawable/fivedollarbutton" />
         </LinearLayout>
 
         <LinearLayout
@@ -116,7 +122,7 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/dollarBtnDesc"
                 android:onClick="addTen"
-                app:srcCompat="@mipmap/ic_launcher" />
+                app:srcCompat="@drawable/tendollarbutton" />
 
             <ImageButton
                 android:id="@+id/addTwenty"
@@ -125,7 +131,7 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/dollarBtnDesc"
                 android:onClick="addTwenty"
-                app:srcCompat="@mipmap/ic_launcher" />
+                app:srcCompat="@drawable/twentydollarbutton" />
         </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

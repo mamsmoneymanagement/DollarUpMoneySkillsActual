@@ -6,8 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,19 +18,40 @@ import java.util.ArrayList;
 
 public class LevelPrompt extends AppCompatActivity {
     private PaymentBoard board;
-    private ArrayList<ImageView> images;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_prompt);
         board = new PaymentBoard();
-        images = new ArrayList<ImageView>();
+        ImageButton button = findViewById(R.id.addOne);
+        button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
+        button = findViewById(R.id.addFive);
+        button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
+        button = findViewById(R.id.addTen);
+        button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
+        button = findViewById(R.id.addTwenty);
+        button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
     }
-    public void addImage(View view){
+    public void addImage(View view, int n){
         ImageView image = new ImageView(this);
-        image.setImageResource(R.drawable.one_dollar);
-        LinearLayout myLayout = (LinearLayout)findViewById(R.id.moneyBoard);
-        myLayout.addView(image);
+        switch(n){
+            case 1:
+                image.setImageResource(R.drawable.onedollarfront);
+                break;
+            case 5:
+                image.setImageResource(R.drawable.fivedollarfront);
+                break;
+            case 10:
+                image.setImageResource(R.drawable.tendollarfront);
+                break;
+            case 20:
+                image.setImageResource(R.drawable.twentydollarfront);
+                break;
+        }
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(150, 300);
+        image.setLayoutParams(params);
+        LinearLayout scroll = findViewById(R.id.scrollLayout);
+        scroll.addView(image);
     }
     public void addOne(View view){
         final AlertDialog dialog = new AlertDialog.Builder(this)
@@ -38,7 +62,7 @@ public class LevelPrompt extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        addImage(findViewById(R.id.moneyBoard));
+                        addImage(findViewById(R.id.moneyBoard), 1);
                         board.addOne();
                         TextView view = findViewById(R.id.numOnes);
                         view.setText(""+board.getNumOnes());
@@ -68,6 +92,7 @@ public class LevelPrompt extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        addImage(findViewById(R.id.moneyBoard), 5);
                         board.addFive();
                         TextView view = findViewById(R.id.numFives);
                         view.setText(""+board.getNumFives());
@@ -97,6 +122,7 @@ public class LevelPrompt extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        addImage(findViewById(R.id.moneyBoard), 10);
                         board.addTen();
                         TextView view = findViewById(R.id.numTens);
                         view.setText(""+board.getNumTens());
@@ -126,6 +152,7 @@ public class LevelPrompt extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        addImage(findViewById(R.id.moneyBoard), 20);
                         board.addTwenty();
                         TextView view = findViewById(R.id.numTwenties);
                         view.setText(""+board.getNumTwenties());
