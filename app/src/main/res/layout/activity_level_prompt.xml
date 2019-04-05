@@ -86,52 +86,73 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/billLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="15dp"
-            android:orientation="horizontal" tools:targetApi="o">
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <ImageButton
-                android:id="@+id/addOne"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/lowerBills"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/dollarBtnDesc"
-                android:onClick="addOne"
-                app:srcCompat="@drawable/onedollarbutton" />
+                android:layout_marginVertical="15dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:targetApi="o">
 
-            <ImageButton
-                android:id="@+id/addFive"
-                android:layout_width="wrap_content"
+                <ImageButton
+                    android:id="@+id/addOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dollarBtnDesc"
+                    android:onClick="addOne"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/onedollarbutton" />
+
+                <ImageButton
+                    android:id="@+id/addFive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dollarBtnDesc"
+                    android:onClick="addFive"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/fivedollarbutton" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/upperBills"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/dollarBtnDesc"
-                android:onClick="addFive"
-                app:srcCompat="@drawable/fivedollarbutton" />
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/addTen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dollarBtnDesc"
+                    android:onClick="addTen"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/tendollarbutton" />
+
+                <ImageButton
+                    android:id="@+id/addTwenty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dollarBtnDesc"
+                    android:onClick="addTwenty"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/twentydollarbutton" />
+            </LinearLayout>
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/addTen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/dollarBtnDesc"
-                android:onClick="addTen"
-                app:srcCompat="@drawable/tendollarbutton" />
-
-            <ImageButton
-                android:id="@+id/addTwenty"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:contentDescription="@string/dollarBtnDesc"
-                android:onClick="addTwenty"
-                app:srcCompat="@drawable/twentydollarbutton" />
-        </LinearLayout>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
