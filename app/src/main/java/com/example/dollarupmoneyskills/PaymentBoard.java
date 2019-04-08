@@ -8,7 +8,7 @@ public class PaymentBoard {
     private int numTens;
     private int numTwenties;
     private ArrayList<Integer> billList;
-    //constructor
+    //constructor for object
     public PaymentBoard(){
         this.numOnes = 0;
         this.numFives = 0;
