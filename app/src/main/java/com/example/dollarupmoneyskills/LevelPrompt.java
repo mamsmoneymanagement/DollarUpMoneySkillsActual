@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
@@ -31,6 +32,7 @@ public class LevelPrompt extends AppCompatActivity {
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
         button = findViewById(R.id.addTwenty);
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
+        Log.v("myTag", "Danush");
     }
     public void addImage(View view, int n){
         ImageView image = new ImageView(this);
@@ -52,6 +54,11 @@ public class LevelPrompt extends AppCompatActivity {
         image.setLayoutParams(params);
         LinearLayout scroll = findViewById(R.id.scrollLayout);
         scroll.addView(image);
+    }
+    public void removeImage(View view, int n){
+        LinearLayout scroll = findViewById(R.id.scrollLayout);
+        int a = board.getBillList().indexOf(n);
+        scroll.removeViewAt(a);
     }
     public void addOne(View view){
         final AlertDialog dialog = new AlertDialog.Builder(this)
@@ -75,6 +82,7 @@ public class LevelPrompt extends AppCompatActivity {
                 if(board.getNumOnes() == 0) {
                     Toast.makeText(LevelPrompt.this, "You can't remove this bill because you have zero", Toast.LENGTH_SHORT).show();
                 }else{
+                    removeImage(findViewById(R.id.moneyBoard), 1);
                     board.removeOne();
                     TextView view = findViewById(R.id.numOnes);
                     view.setText(""+board.getNumOnes());
@@ -82,6 +90,7 @@ public class LevelPrompt extends AppCompatActivity {
                 }
             }
         });
+        Log.v("myTag",board.getBillList().toString());
     }
     public void addFive(View view){
         final AlertDialog dialog = new AlertDialog.Builder(this)
@@ -105,6 +114,7 @@ public class LevelPrompt extends AppCompatActivity {
                 if(board.getNumFives() == 0) {
                     Toast.makeText(LevelPrompt.this, "You can't remove this bill because you have zero", Toast.LENGTH_SHORT).show();
                 }else{
+                    removeImage(findViewById(R.id.moneyBoard), 5);
                     board.removeFive();
                     TextView view = findViewById(R.id.numFives);
                     view.setText(""+board.getNumFives());
@@ -135,6 +145,7 @@ public class LevelPrompt extends AppCompatActivity {
                 if(board.getNumTens() == 0) {
                     Toast.makeText(LevelPrompt.this, "You can't remove this bill because you have zero", Toast.LENGTH_SHORT).show();
                 }else{
+                    removeImage(findViewById(R.id.moneyBoard), 10);
                     board.removeTen();
                     TextView view = findViewById(R.id.numTens);
                     view.setText(""+board.getNumTens());
@@ -165,6 +176,7 @@ public class LevelPrompt extends AppCompatActivity {
                 if(board.getNumTwenties() == 0) {
                     Toast.makeText(LevelPrompt.this, "You can't remove this bill because you have zero", Toast.LENGTH_SHORT).show();
                 }else{
+                    removeImage(findViewById(R.id.moneyBoard), 20);
                     board.removeTwenty();
                     TextView view = findViewById(R.id.numTwenties);
                     view.setText(""+board.getNumTwenties());

@@ -3,6 +3,7 @@ package com.example.dollarupmoneyskills;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 public class LevelOneItems extends AppCompatActivity {
@@ -14,6 +15,7 @@ public class LevelOneItems extends AppCompatActivity {
     }
     public void goToPrompt(View view){
         Intent intent = new Intent(this, LevelPrompt.class);
+        Log.v("myTag", "Danush");
         startActivity(intent);
     }
 }
