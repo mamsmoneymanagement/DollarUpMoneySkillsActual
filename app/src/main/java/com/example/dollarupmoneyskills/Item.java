@@ -7,6 +7,7 @@ public class Item {
     private double price;
     private String imageName;
 
+    //constructor
     public Item(String name, double lowerPrice, double higherPrice, String imageName){
         this.name = name;
         this.lowerPrice = lowerPrice;
