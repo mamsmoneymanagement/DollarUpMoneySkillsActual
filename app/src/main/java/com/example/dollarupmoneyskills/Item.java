@@ -25,7 +25,11 @@ public class Item {
     }
 
     public double genPrice(){
-        return (higherPrice-lowerPrice)*Math.random()+lowerPrice;
+        return Math.round(100*((higherPrice-lowerPrice)*Math.random()+lowerPrice))/100.0;
+    }
+
+    public double getPrice(){
+        return price;
     }
 
 }

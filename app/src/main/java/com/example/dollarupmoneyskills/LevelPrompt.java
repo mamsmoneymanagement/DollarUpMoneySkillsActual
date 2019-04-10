@@ -19,15 +19,17 @@ import java.util.ArrayList;
 
 public class LevelPrompt extends AppCompatActivity {
     private PaymentBoard board;
+    private String[] intentData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_prompt);
         board = new PaymentBoard();
         ImageView image = findViewById(R.id.itemImage);
-        String[] intentData = getIntent().getStringExtra("key").split(",");
+        intentData = getIntent().getStringExtra("key").split(",");
         image.setImageResource(Integer.parseInt(intentData[0]));
-        Log.v("fuck",intentData[1]);
+        TextView priceText = findViewById(R.id.priceText);
+        priceText.setText("Price: $"+intentData[1]);
         ImageButton button = findViewById(R.id.addOne);
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
         button = findViewById(R.id.addFive);
@@ -36,7 +38,6 @@ public class LevelPrompt extends AppCompatActivity {
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
         button = findViewById(R.id.addTwenty);
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
-        Log.v("myTag", "Danush");
     }
     public void addImage(View view, int n){
         ImageView image = new ImageView(this);
@@ -190,15 +191,30 @@ public class LevelPrompt extends AppCompatActivity {
         });
     }
     public void finishPayment(View view){
-        new AlertDialog.Builder(this)
+        final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("You have payed with $"+board.getAmount()+". Would you like to continue?")
                 .setNegativeButton("No", null)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                .setPositiveButton("Yes", null).show();
 
-                    }
-                }).create().show();
+        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        positiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                if(Math.ceil(Double.parseDouble(intentData[1])) == board.getAmount()){
+                    new AlertDialog.Builder(dialog.getContext())
+                            .setTitle("Great Job!")
+                            .setMessage("Go back to the item screen to buy another item.")
+                            .setPositiveButton("Yes", null).create().show();
+                }else{
+                    new AlertDialog.Builder(dialog.getContext())
+                            .setTitle("Horrible Job")
+                            .setMessage("WRONG!")
+                            .setPositiveButton("Try Again", null).create().show();
+                }
+            }
+        });
+
     }
 }

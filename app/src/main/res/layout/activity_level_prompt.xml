@@ -26,6 +26,13 @@
             app:srcCompat="@drawable/ic_launcher_background"
             tools:targetApi="o" />
 
+        <TextView
+            android:id="@+id/priceText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="TextView" />
+
         <Button
             android:id="@+id/button"
             android:layout_width="match_parent"
