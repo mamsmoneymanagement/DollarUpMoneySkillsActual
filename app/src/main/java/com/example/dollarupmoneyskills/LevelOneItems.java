@@ -37,11 +37,6 @@ public class LevelOneItems extends AppCompatActivity {
         adapter = new RecyclerViewAdapter(itemList);
         recyclerView.setAdapter(adapter);
     }
-    public void goToPrompt(View view){
-        Intent intent = new Intent(this, LevelPrompt.class);
-        Log.v("myTag", "Danush");
-        startActivity(intent);
-    }
     private void readItemData(){
         InputStream is = getResources().openRawResource(R.raw.items);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
