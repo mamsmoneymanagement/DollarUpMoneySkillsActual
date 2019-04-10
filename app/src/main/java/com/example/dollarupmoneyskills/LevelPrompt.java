@@ -18,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class LevelPrompt extends AppCompatActivity {
+    //instance variables
     private PaymentBoard board;
     private String[] intentData;
     @Override
