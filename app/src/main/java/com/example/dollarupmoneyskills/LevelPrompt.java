@@ -202,15 +202,20 @@ public class LevelPrompt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                if(Math.ceil(Double.parseDouble(intentData[1])) == board.getAmount()){
+                if(Math.ceil(Double.parseDouble(intentData[1])) == board.getAmount() && board.getBillList().size() == board.leastAmountofBills(board.getAmount())){
                     new AlertDialog.Builder(dialog.getContext())
                             .setTitle("Great Job!")
                             .setMessage("Go back to the item screen to buy another item.")
                             .setPositiveButton("Yes", null).create().show();
+                }else if(Math.ceil(Double.parseDouble(intentData[1])) == board.getAmount() && board.getBillList().size() != board.leastAmountofBills(board.getAmount())){
+                    new AlertDialog.Builder(dialog.getContext())
+                            .setTitle("Okay Job")
+                            .setMessage("You got the right amount, but try using fewer bills.")
+                            .setPositiveButton("Try Again", null).create().show();
                 }else{
                     new AlertDialog.Builder(dialog.getContext())
-                            .setTitle("Horrible Job")
-                            .setMessage("WRONG!")
+                            .setTitle("Horrible")
+                            .setMessage("Wrong")
                             .setPositiveButton("Try Again", null).create().show();
                 }
             }

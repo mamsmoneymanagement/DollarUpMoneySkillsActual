@@ -87,4 +87,25 @@ public class PaymentBoard {
     public ArrayList<Integer> getBillList(){
         return this.billList;
     }
+
+    public int leastAmountofBills(int currentPayment){
+        int bills = 0;
+        while(currentPayment >= 20){
+            bills++;
+            currentPayment -= 20;
+        }
+        while(currentPayment >= 10){
+            bills++;
+            currentPayment -= 10;
+        }
+        while(currentPayment >= 5){
+            bills++;
+            currentPayment -= 5;
+        }
+        while(currentPayment >= 1){
+            bills++;
+            currentPayment -= 1;
+        }
+        return bills;
+    }
 }
