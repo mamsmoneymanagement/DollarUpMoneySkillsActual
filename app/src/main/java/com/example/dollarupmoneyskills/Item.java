@@ -5,15 +5,23 @@ public class Item {
     private double lowerPrice;
     private double higherPrice;
     private double price;
-    private String imageName;
+    private int imageID;
 
     //constructor
-    public Item(String name, double lowerPrice, double higherPrice, String imageName){
+    public Item(String name, double lowerPrice, double higherPrice, int imageID){
         this.name = name;
         this.lowerPrice = lowerPrice;
         this.higherPrice = higherPrice;
-        this.imageName = imageName;
+        this.imageID = imageID;
         this.price = genPrice();
+    }
+
+    public int getImageID(){
+        return imageID;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public double genPrice(){

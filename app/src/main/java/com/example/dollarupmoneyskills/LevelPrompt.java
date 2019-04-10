@@ -24,6 +24,10 @@ public class LevelPrompt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_prompt);
         board = new PaymentBoard();
+        ImageView image = findViewById(R.id.itemImage);
+        String[] intentData = getIntent().getStringExtra("key").split(",");
+        image.setImageResource(Integer.parseInt(intentData[0]));
+        Log.v("fuck",intentData[1]);
         ImageButton button = findViewById(R.id.addOne);
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
         button = findViewById(R.id.addFive);
