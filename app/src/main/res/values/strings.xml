@@ -19,4 +19,6 @@
     <string name="lvl3Txt">Level 3</string>
     <string name="GenericNull">\"null\"</string>
     <string name="DefaultQText">Use your bills to buy the item</string>
+    <string name="txtViewDefault">TextView</string>
+    <string name="buy_item">Buy Item</string>
 </resources>
