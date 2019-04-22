@@ -2,6 +2,8 @@ package com.example.dollarupmoneyskills;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,12 +17,19 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class LevelPrompt extends AppCompatActivity {
     //instance variables
     private PaymentBoard board;
     private String[] intentData;
+    private SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
+    private SharedPreferences.Editor editor = pref.edit();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,16 +53,32 @@ public class LevelPrompt extends AppCompatActivity {
         ImageView image = new ImageView(this);
         switch(n){
             case 1:
-                image.setImageResource(R.drawable.onedollarfront);
+                if(Math.random()<0.5){
+                    image.setImageResource(R.drawable.onedollarfront);
+                }else{
+                    image.setImageResource(R.drawable.onedollarback);
+                }
                 break;
             case 5:
-                image.setImageResource(R.drawable.fivedollarfront);
+                if(Math.random()<0.5){
+                    image.setImageResource(R.drawable.fivedollarfront);
+                }else{
+                    image.setImageResource(R.drawable.fivedollarback);
+                }
                 break;
             case 10:
-                image.setImageResource(R.drawable.tendollarfront);
+                if(Math.random()<0.5){
+                    image.setImageResource(R.drawable.tendollarfront);
+                }else{
+                    image.setImageResource(R.drawable.tendollarback);
+                }
                 break;
             case 20:
-                image.setImageResource(R.drawable.twentydollarfront);
+                if(Math.random()<0.5){
+                    image.setImageResource(R.drawable.twentydollarfront);
+                }else{
+                    image.setImageResource(R.drawable.twentydollarback);
+                }
                 break;
         }
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(150, 300);
@@ -77,8 +102,6 @@ public class LevelPrompt extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         addImage(findViewById(R.id.moneyBoard), 1);
                         board.addOne();
-                        TextView view = findViewById(R.id.numOnes);
-                        view.setText(""+board.getNumOnes());
                     }
                 }).show();
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
@@ -90,8 +113,6 @@ public class LevelPrompt extends AppCompatActivity {
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 1);
                     board.removeOne();
-                    TextView view = findViewById(R.id.numOnes);
-                    view.setText(""+board.getNumOnes());
                     dialog.dismiss();
                 }
             }
@@ -109,8 +130,6 @@ public class LevelPrompt extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         addImage(findViewById(R.id.moneyBoard), 5);
                         board.addFive();
-                        TextView view = findViewById(R.id.numFives);
-                        view.setText(""+board.getNumFives());
                     }
                 }).show();
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
@@ -122,8 +141,6 @@ public class LevelPrompt extends AppCompatActivity {
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 5);
                     board.removeFive();
-                    TextView view = findViewById(R.id.numFives);
-                    view.setText(""+board.getNumFives());
                     dialog.dismiss();
                 }
             }
@@ -140,8 +157,6 @@ public class LevelPrompt extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         addImage(findViewById(R.id.moneyBoard), 10);
                         board.addTen();
-                        TextView view = findViewById(R.id.numTens);
-                        view.setText(""+board.getNumTens());
                     }
                 }).show();
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
@@ -153,8 +168,6 @@ public class LevelPrompt extends AppCompatActivity {
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 10);
                     board.removeTen();
-                    TextView view = findViewById(R.id.numTens);
-                    view.setText(""+board.getNumTens());
                     dialog.dismiss();
                 }
             }
@@ -171,8 +184,6 @@ public class LevelPrompt extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         addImage(findViewById(R.id.moneyBoard), 20);
                         board.addTwenty();
-                        TextView view = findViewById(R.id.numTwenties);
-                        view.setText(""+board.getNumTwenties());
                     }
                 }).show();
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
@@ -184,8 +195,6 @@ public class LevelPrompt extends AppCompatActivity {
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 20);
                     board.removeTwenty();
-                    TextView view = findViewById(R.id.numTwenties);
-                    view.setText(""+board.getNumTwenties());
                     dialog.dismiss();
                 }
             }
@@ -207,7 +216,20 @@ public class LevelPrompt extends AppCompatActivity {
                     new AlertDialog.Builder(dialog.getContext())
                             .setTitle("Great Job!")
                             .setMessage("Go back to the item screen to buy another item.")
-                            .setPositiveButton("Yes", null).create().show();
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    FileOutputStream fos = null;
+                                    try {
+                                        fos = openFileOutput("items.csv", MODE_PRIVATE);
+                                        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
+                                    } catch (FileNotFoundException e) {
+                                        e.printStackTrace();
+                                    }
+                                    Intent intent = new Intent(LevelPrompt.this, LevelOneItems.class);
+                                    startActivity(intent);
+                                }
+                            }).create().show();
                 }else if(Math.ceil(Double.parseDouble(intentData[1])) == board.getAmount() && board.getBillList().size() != board.leastAmountofBills(board.getAmount())){
                     new AlertDialog.Builder(dialog.getContext())
                             .setTitle("Okay Job")

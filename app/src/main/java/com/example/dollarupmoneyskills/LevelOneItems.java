@@ -11,9 +11,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.io.BufferedReader;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -40,7 +42,6 @@ public class LevelOneItems extends AppCompatActivity {
     private void readItemData(){
         InputStream is = getResources().openRawResource(R.raw.items);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-
         String line = "";
         try {
             while((line = reader.readLine()) != null) {
