@@ -1,6 +1,7 @@
 package com.example.dollarupmoneyskills;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,8 +29,6 @@ public class LevelPrompt extends AppCompatActivity {
     //instance variables
     private PaymentBoard board;
     private String[] intentData;
-    private SharedPreferences pref = getApplicationContext().getSharedPreferences("MyPref", 0);
-    private SharedPreferences.Editor editor = pref.edit();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +47,10 @@ public class LevelPrompt extends AppCompatActivity {
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
         button = findViewById(R.id.addTwenty);
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
+
+    }
+    public void Save(View view) {
+
     }
     public void addImage(View view, int n){
         ImageView image = new ImageView(this);
@@ -219,13 +222,6 @@ public class LevelPrompt extends AppCompatActivity {
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    FileOutputStream fos = null;
-                                    try {
-                                        fos = openFileOutput("items.csv", MODE_PRIVATE);
-                                        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
-                                    } catch (FileNotFoundException e) {
-                                        e.printStackTrace();
-                                    }
                                     Intent intent = new Intent(LevelPrompt.this, LevelOneItems.class);
                                     startActivity(intent);
                                 }

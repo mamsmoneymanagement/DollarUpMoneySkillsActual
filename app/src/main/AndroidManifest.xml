@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LevelPrompt"/>
-        <activity android:name=".Settings"/>
-        <activity android:name=".Settings_Menu"/>
-        <activity android:name=".LevelOneItems"/>
+        <activity android:name=".LevelTwoItems"></activity>
+        <activity android:name=".LevelPrompt" />
+        <activity android:name=".Settings" />
+        <activity android:name=".Settings_Menu" />
+        <activity android:name=".LevelOneItems" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
