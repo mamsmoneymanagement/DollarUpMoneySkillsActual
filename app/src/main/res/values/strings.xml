@@ -12,6 +12,7 @@
     <string name="soundTitle">Sound</string>
     <string name="ttSpeech">Text to Speech</string>
     <string name="itemDefault">\"null\"</string>
+    <string name="dollarUp">"Dollar Up"</string>
     <string name="chooseItemTxt">Choose what to buy:</string>
     <string name="FinishTxt">Finish Paying</string>
     <string name="lvl1Txt">Level 1</string>
