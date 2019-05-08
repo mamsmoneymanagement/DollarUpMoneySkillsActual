@@ -25,20 +25,22 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-public class LevelPrompt extends AppCompatActivity {
+public class LevelPromptHard extends AppCompatActivity {
     //instance variables
     private PaymentBoard board;
+    private Wallet wallet;
     private String[] intentData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level_prompt);
+        setContentView(R.layout.activity_level_prompt_hard);
         board = new PaymentBoard();
         ImageView image = findViewById(R.id.itemImage);
         intentData = getIntent().getStringExtra("key").split(",");
         image.setImageResource(Integer.parseInt(intentData[0]));
         TextView priceText = findViewById(R.id.priceText);
         priceText.setText("Price: $"+intentData[1]);
+        wallet = new Wallet((int)Math.ceil(Double.parseDouble(intentData[1])));
         ImageButton button = findViewById(R.id.addOne);
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
         button = findViewById(R.id.addFive);
@@ -47,7 +49,6 @@ public class LevelPrompt extends AppCompatActivity {
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
         button = findViewById(R.id.addTwenty);
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
-
     }
     public void addImage(View view, int n){
         ImageView image = new ImageView(this);
@@ -100,8 +101,13 @@ public class LevelPrompt extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        addImage(findViewById(R.id.moneyBoard), 1);
-                        board.addOne();
+                        if(wallet.getNumOnes() == 0){
+                            Toast.makeText(LevelPromptHard.this, "You can't add this bill because you don't have any of them in your wallet.", Toast.LENGTH_SHORT).show();
+                        }else{
+                            addImage(findViewById(R.id.moneyBoard), 1);
+                            board.addOne();
+                            wallet.removeOne();
+                        }
                     }
                 }).show();
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
@@ -109,10 +115,11 @@ public class LevelPrompt extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 if(board.getNumOnes() == 0) {
-                    Toast.makeText(LevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LevelPromptHard.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 1);
                     board.removeOne();
+                    wallet.addOne();
                     dialog.dismiss();
                 }
             }
@@ -128,8 +135,13 @@ public class LevelPrompt extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        addImage(findViewById(R.id.moneyBoard), 5);
-                        board.addFive();
+                        if(wallet.getNumFives() == 0){
+                            Toast.makeText(LevelPromptHard.this, "You can't add this bill because you don't have any of them in your wallet.", Toast.LENGTH_SHORT).show();
+                        }else{
+                            addImage(findViewById(R.id.moneyBoard), 5);
+                            board.addFive();
+                            wallet.removeFive();
+                        }
                     }
                 }).show();
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
@@ -137,10 +149,11 @@ public class LevelPrompt extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 if(board.getNumFives() == 0) {
-                    Toast.makeText(LevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LevelPromptHard.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 5);
                     board.removeFive();
+                    wallet.addFive();
                     dialog.dismiss();
                 }
             }
@@ -155,8 +168,13 @@ public class LevelPrompt extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        addImage(findViewById(R.id.moneyBoard), 10);
-                        board.addTen();
+                        if(wallet.getNumTens() == 0){
+                            Toast.makeText(LevelPromptHard.this, "You can't add this bill because you don't have any of them in your wallet.", Toast.LENGTH_SHORT).show();
+                        }else{
+                            addImage(findViewById(R.id.moneyBoard), 10);
+                            board.addTen();
+                            wallet.removeTen();
+                        }
                     }
                 }).show();
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
@@ -164,10 +182,11 @@ public class LevelPrompt extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 if(board.getNumTens() == 0) {
-                    Toast.makeText(LevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LevelPromptHard.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 10);
                     board.removeTen();
+                    wallet.addTen();
                     dialog.dismiss();
                 }
             }
@@ -182,8 +201,13 @@ public class LevelPrompt extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        addImage(findViewById(R.id.moneyBoard), 20);
-                        board.addTwenty();
+                        if(wallet.getNumTwenties() == 0){
+                            Toast.makeText(LevelPromptHard.this, "You can't add this bill because you don't have any of them in your wallet.", Toast.LENGTH_SHORT).show();
+                        }else{
+                            addImage(findViewById(R.id.moneyBoard), 20);
+                            board.addTwenty();
+                            wallet.removeTwenty();
+                        }
                     }
                 }).show();
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
@@ -191,10 +215,11 @@ public class LevelPrompt extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 if(board.getNumTwenties() == 0) {
-                    Toast.makeText(LevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LevelPromptHard.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 20);
                     board.removeTwenty();
+                    wallet.addTwenty();
                     dialog.dismiss();
                 }
             }
@@ -219,7 +244,7 @@ public class LevelPrompt extends AppCompatActivity {
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    Intent intent = new Intent(LevelPrompt.this, LevelOneItems.class);
+                                    Intent intent = new Intent(LevelPromptHard.this, LevelThreeItems.class);
                                     startActivity(intent);
                                 }
                             }).create().show();
@@ -237,5 +262,43 @@ public class LevelPrompt extends AppCompatActivity {
             }
         });
 
+    }
+    public void viewWallet(View view){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Wallet");
+
+        final LinearLayout dataDialog = new LinearLayout(this);
+        dataDialog.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        dataDialog.setLayoutParams(layoutParams);
+
+        final TextView viewOne = new TextView(this);
+        viewOne.setText("$1 Bills: "+wallet.getNumOnes());
+        viewOne.setTextSize(30);
+        final TextView viewFive = new TextView(this);
+        viewFive.setText("$5 Bills: "+wallet.getNumFives());
+        viewFive.setTextSize(30);
+        final TextView viewTen = new TextView(this);
+        viewTen.setText("$10 Bills: "+wallet.getNumTens());
+        viewTen.setTextSize(30);
+        final TextView viewTwenty = new TextView(this);
+        viewTwenty.setText("$20 Bills: "+wallet.getNumTwenties());
+        viewTwenty.setTextSize(30);
+
+        dataDialog.addView(viewOne);
+        dataDialog.addView(viewFive);
+        dataDialog.addView(viewTen);
+        dataDialog.addView(viewTwenty);
+
+        builder.setView(dataDialog);
+
+        builder.show();
+
+        builder.setNeutralButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
     }
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dollarupmoneyskills">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -11,7 +12,9 @@
         android:roundIcon="@mipmap/web_hi_res_512"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LevelTwoItems"></activity>
+        <activity android:name=".LevelPromptHard"></activity>
+        <activity android:name=".LevelThreeItems" />
+        <activity android:name=".LevelTwoItems" />
         <activity android:name=".LevelPrompt" />
         <activity android:name=".Settings" />
         <activity android:name=".Settings_Menu" />
