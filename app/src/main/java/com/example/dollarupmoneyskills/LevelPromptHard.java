@@ -248,12 +248,7 @@ public class LevelPromptHard extends AppCompatActivity {
                                     startActivity(intent);
                                 }
                             }).create().show();
-                }else if(Math.ceil(Double.parseDouble(intentData[1])) == board.getAmount() && board.getBillList().size() != board.leastAmountofBills(board.getAmount())){
-                    new AlertDialog.Builder(dialog.getContext())
-                            .setTitle("Okay Job")
-                            .setMessage("You got the right amount, but try using fewer bills.")
-                            .setPositiveButton("Try Again", null).create().show();
-                }else{
+                } else{
                     new AlertDialog.Builder(dialog.getContext())
                             .setTitle("Horrible")
                             .setMessage("Wrong")
