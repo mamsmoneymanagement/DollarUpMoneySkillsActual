@@ -13,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -51,7 +52,6 @@ public class LevelTwoItems extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new CustomRecyclerViewAdapter(customItemList);
         recyclerView.setAdapter(adapter);
-        //showImage();
     }
     protected void onStop(){
         super.onStop();
@@ -178,13 +178,19 @@ public class LevelTwoItems extends AppCompatActivity {
 
         builder.show();
     }
-    public void showImage(){
-        LinearLayout layout = findViewById(R.id.myLayout);
-        for(CustomItem i: customItemList){
-            ImageView image = new ImageView(this);
-            image.setImageURI(Uri.parse(i.getUriString()));
-            layout.addView(image);
+
+    public void onClick(View view) {
+        ImageView image = (ImageView)((ViewGroup)view.getParent()).getChildAt(0);
+        Intent intent = new Intent(this, CustomLevelPrompt.class);
+        CustomItem item = null;
+        for(int i=0; i<customItemList.size(); i++){
+            if(customItemList.get(i).getName() == image.getTag()){
+                item = customItemList.get(i);
+                break;
+            }
         }
+        intent.putExtra("key", item.getUriString()+","+item.genPrice());
+        startActivity(intent);
     }
 
 

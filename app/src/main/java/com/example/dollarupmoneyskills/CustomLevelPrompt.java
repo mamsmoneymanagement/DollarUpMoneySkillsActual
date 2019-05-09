@@ -1,42 +1,33 @@
 package com.example.dollarupmoneyskills;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
+public class CustomLevelPrompt extends AppCompatActivity {
 
-public class LevelPrompt extends AppCompatActivity {
     //instance variables
     private PaymentBoard board;
     private String[] intentData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level_prompt);
+        setContentView(R.layout.activity_custom_level_prompt);
         board = new PaymentBoard();
         ImageView image = findViewById(R.id.itemImage);
         intentData = getIntent().getStringExtra("key").split(",");
-        image.setImageResource(Integer.parseInt(intentData[0]));
+        image.setImageURI(Uri.parse(intentData[0]));
         TextView priceText = findViewById(R.id.priceText);
         priceText.setText("Price: $"+((int)Double.parseDouble(intentData[1])*100)/100.0);
         ImageButton button = findViewById(R.id.addOne);
@@ -109,7 +100,7 @@ public class LevelPrompt extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 if(board.getNumOnes() == 0) {
-                    Toast.makeText(LevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustomLevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 1);
                     board.removeOne();
@@ -137,7 +128,7 @@ public class LevelPrompt extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 if(board.getNumFives() == 0) {
-                    Toast.makeText(LevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustomLevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 5);
                     board.removeFive();
@@ -164,7 +155,7 @@ public class LevelPrompt extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 if(board.getNumTens() == 0) {
-                    Toast.makeText(LevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustomLevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 10);
                     board.removeTen();
@@ -191,7 +182,7 @@ public class LevelPrompt extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 if(board.getNumTwenties() == 0) {
-                    Toast.makeText(LevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CustomLevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
                     removeImage(findViewById(R.id.moneyBoard), 20);
                     board.removeTwenty();
@@ -219,7 +210,7 @@ public class LevelPrompt extends AppCompatActivity {
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    Intent intent = new Intent(LevelPrompt.this, LevelOneItems.class);
+                                    Intent intent = new Intent(CustomLevelPrompt.this, LevelTwoItems.class);
                                     startActivity(intent);
                                 }
                             }).create().show();
@@ -238,4 +229,5 @@ public class LevelPrompt extends AppCompatActivity {
         });
 
     }
+
 }

@@ -20,6 +20,7 @@ class CustomRecyclerViewHolder extends RecyclerView.ViewHolder{
     public CustomRecyclerViewHolder(View itemView){
         super(itemView);
         imageView = itemView.findViewById(R.id.itemImage);
+        imageView.setRotation(90);
         textView = itemView.findViewById(R.id.itemDescription);
     }
     public void setImageURI(String id){

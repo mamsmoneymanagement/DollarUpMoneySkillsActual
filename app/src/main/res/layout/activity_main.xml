@@ -68,7 +68,10 @@
                 android:contentDescription="@string/GenericNull"
                 android:onClick="goToSettings"
                 app:srcCompat="@android:drawable/ic_menu_manage"
-                tools:targetApi="o" />
+                tools:targetApi="o"
+
+                android:visibility="gone"
+                />
         </LinearLayout>
 
     </LinearLayout>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomLevelPrompt">
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginVertical="15dp"
+            android:contentDescription="@string/itemDefault"
+            app:srcCompat="@drawable/ic_launcher_background"
+            tools:targetApi="o" />
+
+        <TextView
+            android:id="@+id/priceText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/txtViewDefault"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="15dp"
+            android:onClick="finishPayment"
+            android:text="@string/FinishTxt" tools:targetApi="o"/>
+
+        <HorizontalScrollView
+            android:id="@+id/moneyBoard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/scrollLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"></LinearLayout>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:id="@+id/billLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lowerBills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="15dp"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:targetApi="o">
+
+                <ImageButton
+                    android:id="@+id/addOne"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dollarBtnDesc"
+                    android:onClick="addOne"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/onedollarbutton" />
+
+                <ImageButton
+                    android:id="@+id/addFive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dollarBtnDesc"
+                    android:onClick="addFive"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/fivedollarbutton" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/upperBills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/addTen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dollarBtnDesc"
+                    android:onClick="addTen"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/tendollarbutton" />
+
+                <ImageButton
+                    android:id="@+id/addTwenty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/dollarBtnDesc"
+                    android:onClick="addTwenty"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/twentydollarbutton" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
