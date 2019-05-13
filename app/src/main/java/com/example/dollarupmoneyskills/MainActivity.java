@@ -18,8 +18,17 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LevelOneItems.class);
         startActivity(intent);
     }
+    public void goToLevelTwo(View view){
+        Intent intent = new Intent(this, LevelTwoItems.class);
+        startActivity(intent);
+    }
+    public void goToLevelThree(View view){
+        Intent intent = new Intent(this, LevelThreeItems.class);
+        startActivity(intent);
+    }
     public void goToSettings(View view){
         Intent intent = new Intent(this, Settings_Menu.class);
         startActivity(intent);
     }
+
 }

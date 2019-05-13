@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dollarupmoneyskills">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -9,10 +12,14 @@
         android:roundIcon="@mipmap/web_hi_res_512"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LevelPrompt"/>
-        <activity android:name=".Settings"/>
-        <activity android:name=".Settings_Menu"/>
-        <activity android:name=".LevelOneItems"/>
+        <activity android:name=".CustomLevelPrompt"></activity>
+        <activity android:name=".LevelPromptHard" />
+        <activity android:name=".LevelThreeItems" />
+        <activity android:name=".LevelTwoItems" />
+        <activity android:name=".LevelPrompt" />
+        <activity android:name=".Settings" />
+        <activity android:name=".Settings_Menu" />
+        <activity android:name=".LevelOneItems" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
