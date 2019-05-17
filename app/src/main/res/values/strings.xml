@@ -22,4 +22,5 @@
     <string name="DefaultQText">Use your bills to buy the item</string>
     <string name="txtViewDefault">TextView</string>
     <string name="buy_item">Buy Item</string>
+    <string name="credit">This app icon was created using LogoMakr</string>
 </resources>
