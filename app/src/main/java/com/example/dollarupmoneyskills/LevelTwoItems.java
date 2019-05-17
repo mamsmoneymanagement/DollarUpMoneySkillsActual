@@ -133,50 +133,74 @@ public class LevelTwoItems extends AppCompatActivity {
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        imgData = data.getDataString();
-        imgDataList.add(imgData);
+        try{
+            imgData = data.getDataString();
+            imgDataList.add(imgData);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Give some information about your object.");
+
+            final LinearLayout dataDialog = new LinearLayout(this);
+            dataDialog.setOrientation(LinearLayout.VERTICAL);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            dataDialog.setLayoutParams(layoutParams);
+            final TextView name = new TextView(this);
+            name.setText("Name");
+            name.setTextSize(30);
+            name.setTextColor(Color.BLACK);
+            final EditText nameInput = new EditText(this);
+            nameInput.setInputType(InputType.TYPE_CLASS_TEXT);
+            final TextView price = new TextView(this);
+            price.setText("Price");
+            price.setTextSize(30);
+            price.setTextColor(Color.BLACK);
+            final EditText priceInput = new EditText(this);
+            priceInput.setInputType(InputType.TYPE_CLASS_TEXT);
+            dataDialog.addView(name);
+            dataDialog.addView(nameInput);
+            dataDialog.addView(price);
+            dataDialog.addView(priceInput);
+            builder.setView(dataDialog);
+
+            builder.setPositiveButton("OK", null);
+            final AlertDialog dialog = builder.create();
+            dialog.show();
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view) {
+                    boolean works;
+                    try{
+                        double d = Double.parseDouble(priceInput.getText().toString());
+                        works = true;
+                    }catch(NumberFormatException e){
+                        works = false;
+                    }
+                    if(nameInput.getText().toString().length() == 0 || !works){
+                        if(nameInput.getText().toString().length() == 0) {
+                            nameInput.setError("Please set a name for the item.");
+                        }
+                        if(!works){
+                            priceInput.setError("Please set the price to a valid number");
+                        }
+                    }else{
+                        customItemList.add(new CustomItem(nameInput.getText().toString(), Double.parseDouble(priceInput.getText().toString()), Double.parseDouble(priceInput.getText().toString()), imgData));
+                        adapter.notifyItemInserted(customItemList.size()-1);
+                        dialog.dismiss();
+                    }
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+        }catch(Exception e){
+
+        }
 
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Give some information about your object.");
 
-        final LinearLayout dataDialog = new LinearLayout(this);
-        dataDialog.setOrientation(LinearLayout.VERTICAL);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        dataDialog.setLayoutParams(layoutParams);
-        final TextView name = new TextView(this);
-        name.setText("Name");
-        name.setTextSize(30);
-        name.setTextColor(Color.BLACK);
-        final EditText nameInput = new EditText(this);
-        nameInput.setInputType(InputType.TYPE_CLASS_TEXT);
-        final TextView price = new TextView(this);
-        price.setText("Price");
-        price.setTextSize(30);
-        price.setTextColor(Color.BLACK);
-        final EditText priceInput = new EditText(this);
-        priceInput.setInputType(InputType.TYPE_CLASS_TEXT);
-        dataDialog.addView(name);
-        dataDialog.addView(nameInput);
-        dataDialog.addView(price);
-        dataDialog.addView(priceInput);
-        builder.setView(dataDialog);
-
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                customItemList.add(new CustomItem(nameInput.getText().toString(), Double.parseDouble(priceInput.getText().toString()), Double.parseDouble(priceInput.getText().toString()), imgData));
-                adapter.notifyItemInserted(customItemList.size()-1);
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-
-        builder.show();
     }
 
     public void onClick(View view) {

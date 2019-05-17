@@ -26,9 +26,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LevelThreeItems.class);
         startActivity(intent);
     }
-    public void goToSettings(View view){
-        Intent intent = new Intent(this, Settings_Menu.class);
-        startActivity(intent);
-    }
 
 }

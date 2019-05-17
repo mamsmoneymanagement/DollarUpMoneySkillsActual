@@ -37,10 +37,12 @@ public class LevelPromptHard extends AppCompatActivity {
         board = new PaymentBoard();
         ImageView image = findViewById(R.id.itemImage);
         intentData = getIntent().getStringExtra("key").split(",");
-        image.setImageResource(Integer.parseInt(intentData[0]));
+        image.setImageResource(Integer.parseInt(intentData[0])); //setting the image to the same image the user picked in the previous screen
         TextView priceText = findViewById(R.id.priceText);
-        priceText.setText("Price: $"+intentData[1]);
-        wallet = new Wallet((int)Math.ceil(Double.parseDouble(intentData[1])));
+        priceText.setText("Price: $"+intentData[1]); //setting the price to the price of the same item that the user picked
+        wallet = new Wallet((int)Math.ceil(Double.parseDouble(intentData[1]))); //Creating wallet object with enough money to pay for item
+
+        //This block sets the dimensions of the image buttons with the dollar bills
         ImageButton button = findViewById(R.id.addOne);
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
         button = findViewById(R.id.addFive);
@@ -50,10 +52,16 @@ public class LevelPromptHard extends AppCompatActivity {
         button = findViewById(R.id.addTwenty);
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
     }
+
+    /*
+    Method to add a certain dollar bill to the scroll view.
+    The int n corresponds to the value of the bill
+     */
     public void addImage(View view, int n){
         ImageView image = new ImageView(this);
         switch(n){
             case 1:
+                //Randomly determines whether to place the frontside or backside of bill
                 if(Math.random()<0.5){
                     image.setImageResource(R.drawable.onedollarfront);
                 }else{
@@ -82,17 +90,26 @@ public class LevelPromptHard extends AppCompatActivity {
                 }
                 break;
         }
+
+        //This block sets the dimensions of the bill and then adds it to the scrollview
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(150, 300);
         image.setLayoutParams(params);
         LinearLayout scroll = findViewById(R.id.scrollLayout);
         scroll.addView(image);
     }
+    /*
+    Method to remove the first instance of a bill in the scrollview
+     */
     public void removeImage(View view, int n){
         LinearLayout scroll = findViewById(R.id.scrollLayout);
         int a = board.getBillList().indexOf(n);
         scroll.removeViewAt(a);
     }
+    /*
+    Method to add or remove a $1 bill from the payment
+     */
     public void addOne(View view){
+        //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
@@ -101,6 +118,7 @@ public class LevelPromptHard extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //To make sure that there is a bill in the wallet
                         if(wallet.getNumOnes() == 0){
                             Toast.makeText(LevelPromptHard.this, "You can't add this bill because you don't have any of them in your wallet.", Toast.LENGTH_SHORT).show();
                         }else{
@@ -110,10 +128,12 @@ public class LevelPromptHard extends AppCompatActivity {
                         }
                     }
                 }).show();
+        //Adding method to remove bill
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
         negativeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //To make sure there is a bill in the payment
                 if(board.getNumOnes() == 0) {
                     Toast.makeText(LevelPromptHard.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
@@ -126,7 +146,11 @@ public class LevelPromptHard extends AppCompatActivity {
         });
         Log.v("myTag",board.getBillList().toString());
     }
+    /*
+    Method to add or remove a $5 bill from the payment
+     */
     public void addFive(View view){
+        //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
@@ -135,6 +159,7 @@ public class LevelPromptHard extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //To make sure there is a bill in the wallet
                         if(wallet.getNumFives() == 0){
                             Toast.makeText(LevelPromptHard.this, "You can't add this bill because you don't have any of them in your wallet.", Toast.LENGTH_SHORT).show();
                         }else{
@@ -144,10 +169,12 @@ public class LevelPromptHard extends AppCompatActivity {
                         }
                     }
                 }).show();
+        //Adding a method to remove a bill
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
         negativeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //To make sure there is a bill in the payment
                 if(board.getNumFives() == 0) {
                     Toast.makeText(LevelPromptHard.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
@@ -159,7 +186,11 @@ public class LevelPromptHard extends AppCompatActivity {
             }
         });
     }
+    /*
+    Method to add or remove a $10 bill from the payment
+     */
     public void addTen(View view){
+        //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
@@ -168,6 +199,7 @@ public class LevelPromptHard extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //To make sure there is a bill in the wallet
                         if(wallet.getNumTens() == 0){
                             Toast.makeText(LevelPromptHard.this, "You can't add this bill because you don't have any of them in your wallet.", Toast.LENGTH_SHORT).show();
                         }else{
@@ -177,10 +209,12 @@ public class LevelPromptHard extends AppCompatActivity {
                         }
                     }
                 }).show();
+        //Adding a method to remove a bill
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
         negativeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //To make sure there is a bill in the payment
                 if(board.getNumTens() == 0) {
                     Toast.makeText(LevelPromptHard.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
@@ -192,7 +226,11 @@ public class LevelPromptHard extends AppCompatActivity {
             }
         });
     }
+    /*
+    Method to add or remove a $20 bill from the payment
+     */
     public void addTwenty(View view){
+        //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
@@ -201,6 +239,7 @@ public class LevelPromptHard extends AppCompatActivity {
                 .setPositiveButton("Add", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        //To make sure there is a bill in the wallet
                         if(wallet.getNumTwenties() == 0){
                             Toast.makeText(LevelPromptHard.this, "You can't add this bill because you don't have any of them in your wallet.", Toast.LENGTH_SHORT).show();
                         }else{
@@ -210,10 +249,12 @@ public class LevelPromptHard extends AppCompatActivity {
                         }
                     }
                 }).show();
+        //Adding a method to remove a bill
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
         negativeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //To make sure there is a bill in the payment
                 if(board.getNumTwenties() == 0) {
                     Toast.makeText(LevelPromptHard.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
@@ -225,7 +266,11 @@ public class LevelPromptHard extends AppCompatActivity {
             }
         });
     }
+    /*
+    Method to allow the user to submit their payment and see if they got the right answer
+     */
     public void finishPayment(View view){
+        //Creation of dialog prompt that tells user the amount they are paying
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("You have payed with $"+board.getAmount()+". Would you like to continue?")
@@ -237,6 +282,7 @@ public class LevelPromptHard extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
+                //if the user gets the right answer, they are then prompted to go back to the item choosing screen
                 if(Math.ceil(Double.parseDouble(intentData[1])) == board.getAmount() && board.getBillList().size() == board.leastAmountofBills(board.getAmount())){
                     new AlertDialog.Builder(dialog.getContext())
                             .setTitle("Great Job!")
@@ -244,11 +290,20 @@ public class LevelPromptHard extends AppCompatActivity {
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
-                                    Intent intent = new Intent(LevelPromptHard.this, LevelThreeItems.class);
+                                    Intent intent = new Intent(LevelPromptHard.this, LevelOneItems.class);
                                     startActivity(intent);
                                 }
                             }).create().show();
-                } else{
+                }
+                //If the user has the right number, but has used too many bills, they are prompted to try again
+                else if(Math.ceil(Double.parseDouble(intentData[1])) == board.getAmount() && board.getBillList().size() != board.leastAmountofBills(board.getAmount())){
+                    new AlertDialog.Builder(dialog.getContext())
+                            .setTitle("Okay Job")
+                            .setMessage("You got the right amount, but try using fewer bills.")
+                            .setPositiveButton("Try Again", null).create().show();
+                }
+                //If the user gets the wrong number, they are prompted to try again
+                else{
                     new AlertDialog.Builder(dialog.getContext())
                             .setTitle("Horrible")
                             .setMessage("Wrong")
@@ -258,15 +313,20 @@ public class LevelPromptHard extends AppCompatActivity {
         });
 
     }
+    /*
+    Method to view the number of bills that the user has in their wallet
+     */
     public void viewWallet(View view){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Wallet");
 
+        //Creating complete outer view of dialog box
         final LinearLayout dataDialog = new LinearLayout(this);
         dataDialog.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         dataDialog.setLayoutParams(layoutParams);
 
+        //This block creates the set of textviews that shows the number of bills in the wallet
         final TextView viewOne = new TextView(this);
         viewOne.setText("$1 Bills: "+wallet.getNumOnes());
         viewOne.setTextSize(30);
@@ -280,11 +340,13 @@ public class LevelPromptHard extends AppCompatActivity {
         viewTwenty.setText("$20 Bills: "+wallet.getNumTwenties());
         viewTwenty.setTextSize(30);
 
+        //Adding the textviews to the linear layout
         dataDialog.addView(viewOne);
         dataDialog.addView(viewFive);
         dataDialog.addView(viewTen);
         dataDialog.addView(viewTwenty);
 
+        //Setting the view of the dialog to the linear layout
         builder.setView(dataDialog);
 
         builder.show();

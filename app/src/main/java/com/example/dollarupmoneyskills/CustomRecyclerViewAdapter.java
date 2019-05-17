@@ -3,6 +3,7 @@ package com.example.dollarupmoneyskills;
 
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.media.ExifInterface;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,7 +13,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.File;
 import java.util.ArrayList;
+
+import static java.security.AccessController.getContext;
 
 class CustomRecyclerViewHolder extends RecyclerView.ViewHolder{
     private ImageView imageView;
@@ -20,11 +24,34 @@ class CustomRecyclerViewHolder extends RecyclerView.ViewHolder{
     public CustomRecyclerViewHolder(View itemView){
         super(itemView);
         imageView = itemView.findViewById(R.id.itemImage);
-        imageView.setRotation(90);
         textView = itemView.findViewById(R.id.itemDescription);
     }
     public void setImageURI(String id){
+        int rotate = 0;
+        try {
+            File imageFile = new File(Uri.parse(id).getPath());
+            ExifInterface exif = new ExifInterface(imageFile.getAbsolutePath());
+            int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
+
+            switch (orientation) {
+                case ExifInterface.ORIENTATION_ROTATE_270:
+                    rotate = 270;
+                    break;
+                case ExifInterface.ORIENTATION_ROTATE_180:
+                    rotate = 180;
+                    break;
+                case ExifInterface.ORIENTATION_ROTATE_90:
+                    rotate = 90;
+                    break;
+            }
+
+            Log.i("RotateImage", "Exif orientation: " + orientation);
+            Log.i("RotateImage", "Rotate value: " + rotate);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         imageView.setImageURI(Uri.parse(id));
+        imageView.setRotation(rotate);
     }
     public void setImageTag(String tag){
         imageView.setTag(tag);

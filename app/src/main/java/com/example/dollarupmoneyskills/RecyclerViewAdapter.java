@@ -10,21 +10,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
+/*
+Class that controls the layout of the individual components in the RecyclerView
+(i.e. the layout resource file)
+ */
 class RecyclerViewHolder extends RecyclerView.ViewHolder{
-    private ImageView imageView;
-    private TextView textView;
+    private ImageView imageView; //imageview in cardview
+    private TextView textView; //textview in cardview
     public RecyclerViewHolder(View itemView){
         super(itemView);
         imageView = itemView.findViewById(R.id.itemImage);
         textView = itemView.findViewById(R.id.itemDescription);
     }
+    //Method to set image id of imageview
     public void setImageResource(int id){
         imageView.setImageResource(id);
     }
+    //method to set tag (essentially identifier) of imageview
     public void setImageTag(String tag){
         imageView.setTag(tag);
     }
+    //method to set text of text view
     public void setText(String text){
         textView.setText(text);
     }
@@ -32,7 +38,7 @@ class RecyclerViewHolder extends RecyclerView.ViewHolder{
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder>{
 
-    private ArrayList<Item> itemList;
+    private ArrayList<Item> itemList; //list of items put into recyclerview
 
     public RecyclerViewAdapter(ArrayList<Item> itemList){
         this.itemList = itemList;
@@ -44,6 +50,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
         return new RecyclerViewHolder(itemView);
     }
 
+    //method to set the elements of each cardview in the recyclerview
     @Override
     public void onBindViewHolder(RecyclerViewHolder recyclerViewHolder, int i) {
         recyclerViewHolder.setImageResource(itemList.get(i).getImageID());

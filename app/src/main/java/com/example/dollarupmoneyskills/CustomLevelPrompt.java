@@ -29,10 +29,12 @@ public class CustomLevelPrompt extends AppCompatActivity {
         board = new PaymentBoard();
         ImageView image = findViewById(R.id.itemImage);
         intentData = getIntent().getStringExtra("key").split(",");
-        image.setImageURI(Uri.parse(intentData[0]));
+        image.setImageURI(Uri.parse(intentData[0])); //setting the image to the same image the user picked in the previous screen
         TextView priceText = findViewById(R.id.priceText);
         price = Math.round(100.0*Double.parseDouble(intentData[1]))/100.0;
-        priceText.setText("Price: $"+price);
+        priceText.setText("Price: $"+price); //setting the price to the price of the same item that the user picked
+
+        //This block sets the dimensions of the image buttons with the dollar bills
         ImageButton button = findViewById(R.id.addOne);
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
         button = findViewById(R.id.addFive);
@@ -43,10 +45,15 @@ public class CustomLevelPrompt extends AppCompatActivity {
         button.setLayoutParams(new LinearLayout.LayoutParams(300,150));
 
     }
+    /*
+    Method to add a certain dollar bill to the scroll view.
+    The int n corresponds to the value of the bill
+     */
     public void addImage(View view, int n){
         ImageView image = new ImageView(this);
         switch(n){
             case 1:
+                //Randomly determines whether to place the frontside or backside of bill
                 if(Math.random()<0.5){
                     image.setImageResource(R.drawable.onedollarfront);
                 }else{
@@ -75,17 +82,26 @@ public class CustomLevelPrompt extends AppCompatActivity {
                 }
                 break;
         }
+
+        //This block sets the dimensions of the bill and then adds it to the scrollview
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(150, 300);
         image.setLayoutParams(params);
         LinearLayout scroll = findViewById(R.id.scrollLayout);
         scroll.addView(image);
     }
+    /*
+    Method to remove the first instance of a bill in the scrollview
+     */
     public void removeImage(View view, int n){
         LinearLayout scroll = findViewById(R.id.scrollLayout);
         int a = board.getBillList().indexOf(n);
         scroll.removeViewAt(a);
     }
+    /*
+    Method to add or remove a $1 bill from the payment
+     */
     public void addOne(View view){
+        //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
@@ -98,10 +114,12 @@ public class CustomLevelPrompt extends AppCompatActivity {
                         board.addOne();
                     }
                 }).show();
+        //Adding method to remove $1 bill
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
         negativeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //Check to make sure they have a bill before removing it
                 if(board.getNumOnes() == 0) {
                     Toast.makeText(CustomLevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
@@ -113,7 +131,11 @@ public class CustomLevelPrompt extends AppCompatActivity {
         });
         Log.v("myTag",board.getBillList().toString());
     }
+    /*
+    Method to add or remove $5 bill from the payment
+     */
     public void addFive(View view){
+        //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
@@ -126,10 +148,12 @@ public class CustomLevelPrompt extends AppCompatActivity {
                         board.addFive();
                     }
                 }).show();
+        //Adding method to remove $1 bill
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
         negativeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //Check to make sure they have a bill before removing it
                 if(board.getNumFives() == 0) {
                     Toast.makeText(CustomLevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
@@ -140,7 +164,11 @@ public class CustomLevelPrompt extends AppCompatActivity {
             }
         });
     }
+    /*
+    Method to add or remove $10 bill from the payment
+     */
     public void addTen(View view){
+        //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
@@ -153,10 +181,12 @@ public class CustomLevelPrompt extends AppCompatActivity {
                         board.addTen();
                     }
                 }).show();
+        //Adding method to remove bill as well
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
         negativeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //Check to make sure they have a bill before removing it
                 if(board.getNumTens() == 0) {
                     Toast.makeText(CustomLevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
@@ -167,7 +197,11 @@ public class CustomLevelPrompt extends AppCompatActivity {
             }
         });
     }
+    /*
+    Method to add or remove $20 bill from payment
+     */
     public void addTwenty(View view){
+        //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("Do you want to pay with this bill?")
@@ -180,10 +214,12 @@ public class CustomLevelPrompt extends AppCompatActivity {
                         board.addTwenty();
                     }
                 }).show();
+        //Adding a remove to remove $20 bill
         Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
         negativeButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                //Adding condition to make sure that the user has a bill in their payment
                 if(board.getNumTwenties() == 0) {
                     Toast.makeText(CustomLevelPrompt.this, "You can't remove this bill because you don't have any of them in your payment.", Toast.LENGTH_SHORT).show();
                 }else{
@@ -194,7 +230,12 @@ public class CustomLevelPrompt extends AppCompatActivity {
             }
         });
     }
+    /*
+    Method to allow the user to submit their payment and see if they got the right answer,
+    as well as answer more questions
+     */
     public void finishPayment(View view){
+        //Creation of dialog prompt that tells user the amount they are paying
         final AlertDialog dialogBox = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
                 .setMessage("You have payed with $"+board.getAmount()+". Would you like to continue?")
@@ -206,17 +247,23 @@ public class CustomLevelPrompt extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialogBox.dismiss();
+                //If the user gets the right answer, they are then asked how much change they would get back
                 if(Math.ceil(Double.parseDouble(intentData[1])) == board.getAmount() && board.getBillList().size() == board.leastAmountofBills(board.getAmount())){
                     final AlertDialog.Builder builder = new AlertDialog.Builder(dialogBox.getContext());
                     builder.setTitle("How many cents would you get back as change?");
 
                     final EditText answer = new EditText(dialogBox.getContext());
                     builder.setView(answer);
-                    builder.setPositiveButton("Submit Answer", new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton("Submit Answer", null);
+                    final AlertDialog dialog = builder.create();
+                    dialog.show();
+                    dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
                         @Override
-                        public void onClick(DialogInterface dialog, int which) {
+                        public void onClick(View v) {
                             Log.v("dataList", ""+(100*(Math.ceil(price)-price)));
-                            if(Integer.parseInt(answer.getText().toString()) == Math.round(100*(Math.ceil(price)-price))){
+                            //If the user gets the change question correct, they are met with a victory message that prompts them
+                            //to go back to the item choosing screen
+                            if(answer.getText().toString().equals(""+Math.round(100*(Math.ceil(price)-price)))){
                                 new AlertDialog.Builder(builder.getContext())
                                         .setTitle("Great Job!")
                                         .setMessage("Go back to the item screen to buy another item.")
@@ -232,18 +279,16 @@ public class CustomLevelPrompt extends AppCompatActivity {
                                                 }
                                             }
                                         }).create().show();
-                            }else{
+                            }
+                            //If they don't get the right answer, a toast message notifies them
+                            else{
                                 Toast.makeText(CustomLevelPrompt.this, "This is not the correct answer. Please try again.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
-                    builder.show();
-                }else if(Math.ceil(Double.parseDouble(intentData[1])) == board.getAmount() && board.getBillList().size() != board.leastAmountofBills(board.getAmount())){
-                    new AlertDialog.Builder(dialogBox.getContext())
-                            .setTitle("Okay Job")
-                            .setMessage("You got the right amount, but try using fewer bills.")
-                            .setPositiveButton("Try Again", null).create().show();
-                }else{
+                }
+                //If user get the wrong answer for the payment of the item
+                else{
                     new AlertDialog.Builder(dialogBox.getContext())
                             .setTitle("Horrible")
                             .setMessage("Wrong")

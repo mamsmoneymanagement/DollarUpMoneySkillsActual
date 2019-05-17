@@ -52,6 +52,12 @@
             app:srcCompat="@drawable/levelthree" />
 
 
+        <TextView
+            android:id="@+id/credit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="App Logo Created Using LogoMakr" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -59,19 +65,6 @@
             android:gravity="center_horizontal|top"
             android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/settings"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="100dp"
-                android:layout_weight="1"
-                android:contentDescription="@string/GenericNull"
-                android:onClick="goToSettings"
-                app:srcCompat="@android:drawable/ic_menu_manage"
-                tools:targetApi="o"
-
-                android:visibility="gone"
-                />
         </LinearLayout>
 
     </LinearLayout>

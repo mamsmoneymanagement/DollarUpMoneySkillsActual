@@ -29,7 +29,7 @@ public class LevelThreeItems extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_three_items);
 
-        readItemData();
+        //Setting all the required fields of the RecyclerView object
         recyclerView = findViewById(R.id.myRecyclerView);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -37,11 +37,16 @@ public class LevelThreeItems extends AppCompatActivity {
         adapter = new RecyclerViewAdapter(itemList);
         recyclerView.setAdapter(adapter);
     }
+    /*
+    Method that reads the item data from the items.csv file and creates Item objects
+    out of them
+     */
     private void readItemData(){
         InputStream is = getResources().openRawResource(R.raw.items);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         String line = "";
         try {
+            //Goes through all the lines of the file and then instantiates an Item object for each line
             while((line = reader.readLine()) != null) {
                 // Split by ','
                 String[] fields = line.split(",");
@@ -54,17 +59,21 @@ public class LevelThreeItems extends AppCompatActivity {
             Log.wtf("MainActivity","ERROR reading items on line: " + line);
         }
     }
-
+    /*
+    Method to go to LevelPrompt with that particular item chosen
+     */
     public void onClick(View view) {
         ImageView image = (ImageView)((ViewGroup)view.getParent()).getChildAt(0);
         Intent intent = new Intent(this, LevelPromptHard.class);
         Item item = null;
+        //Finding image which has the same as the item chosen
         for(int i=0; i<itemList.size(); i++){
             if(itemList.get(i).getName() == image.getTag()){
                 item = itemList.get(i);
                 break;
             }
         }
+        //sending an intent with the item data into the next activity
         intent.putExtra("key", item.getImageID()+","+item.genPrice());
         startActivity(intent);
     }
