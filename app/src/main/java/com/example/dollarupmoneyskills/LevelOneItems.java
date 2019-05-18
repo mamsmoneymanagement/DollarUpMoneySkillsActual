@@ -21,10 +21,10 @@ import java.util.Arrays;
 
 public class LevelOneItems extends AppCompatActivity {
 
-    private ArrayList<Item> itemList = new ArrayList<Item>();
-    private RecyclerView recyclerView;
-    private RecyclerViewAdapter adapter;
-    private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<Item> itemList = new ArrayList<Item>(); //list of items that will be available to user
+    private RecyclerView recyclerView; //view that shows list of items
+    private RecyclerViewAdapter adapter; //adapter to recyclerview
+    private RecyclerView.LayoutManager layoutManager; //layout manager for recyclerview
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +79,11 @@ public class LevelOneItems extends AppCompatActivity {
         }
         //sending an intent with the item data into the next activity
         intent.putExtra("key", item.getImageID()+","+item.genPrice());
+        startActivity(intent);
+    }
+    //Method to control what the android back button does
+    public void onBackPressed(){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

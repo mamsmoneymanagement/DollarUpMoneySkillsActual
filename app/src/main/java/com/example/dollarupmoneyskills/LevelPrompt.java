@@ -27,8 +27,8 @@ import java.util.ArrayList;
 
 public class LevelPrompt extends AppCompatActivity {
     //instance variables
-    private PaymentBoard board;
-    private String[] intentData;
+    private PaymentBoard board; //payment board used to store what the user has paid with so far
+    private String[] intentData; //array to store data sent to activity through intent
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,7 +106,7 @@ public class LevelPrompt extends AppCompatActivity {
     /*
     Method to add or remove a $1 bill from the payment
      */
-    public void addOne(View view){
+    public void changeOne(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
@@ -140,7 +140,7 @@ public class LevelPrompt extends AppCompatActivity {
     /*
     Method to add or remove $5 bill from the payment
      */
-    public void addFive(View view){
+    public void changeFive(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
@@ -173,7 +173,7 @@ public class LevelPrompt extends AppCompatActivity {
     /*
     Method to add or remove $10 bill from the payment
      */
-    public void addTen(View view){
+    public void changeTen(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
@@ -206,7 +206,7 @@ public class LevelPrompt extends AppCompatActivity {
     /*
     Method to add or remove $20 bill from payment
      */
-    public void addTwenty(View view){
+    public void changeTwenty(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")

@@ -32,7 +32,15 @@ public class CustomLevelPrompt extends AppCompatActivity {
         image.setImageURI(Uri.parse(intentData[0])); //setting the image to the same image the user picked in the previous screen
         TextView priceText = findViewById(R.id.priceText);
         price = Math.round(100.0*Double.parseDouble(intentData[1]))/100.0;
-        priceText.setText("Price: $"+price); //setting the price to the price of the same item that the user picked
+
+        //Making sure there are the right amount of decimal places in the textview
+        String p = ""+price;
+        String s = p.substring(p.indexOf("."));
+        while(s.length() < 3){
+            s+="0";
+            p+="0";
+        }
+        priceText.setText("Price: $"+p); //setting the price to the price of the same item that the user picked
 
         //This block sets the dimensions of the image buttons with the dollar bills
         ImageButton button = findViewById(R.id.addOne);
@@ -100,7 +108,7 @@ public class CustomLevelPrompt extends AppCompatActivity {
     /*
     Method to add or remove a $1 bill from the payment
      */
-    public void addOne(View view){
+    public void changeOne(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
@@ -134,7 +142,7 @@ public class CustomLevelPrompt extends AppCompatActivity {
     /*
     Method to add or remove $5 bill from the payment
      */
-    public void addFive(View view){
+    public void changeFive(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
@@ -167,7 +175,7 @@ public class CustomLevelPrompt extends AppCompatActivity {
     /*
     Method to add or remove $10 bill from the payment
      */
-    public void addTen(View view){
+    public void changeTen(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
@@ -200,7 +208,7 @@ public class CustomLevelPrompt extends AppCompatActivity {
     /*
     Method to add or remove $20 bill from payment
      */
-    public void addTwenty(View view){
+    public void changeTwenty(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")

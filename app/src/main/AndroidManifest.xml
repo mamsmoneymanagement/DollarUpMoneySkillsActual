@@ -13,12 +13,17 @@
         android:supportsRtl="true"
         android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CustomLevelPrompt"></activity>
+        <activity android:name=".CustomLevelPrompt">
+        </activity>
         <activity android:name=".LevelPromptHard" />
-        <activity android:name=".LevelThreeItems" />
-        <activity android:name=".LevelTwoItems" />
+        <activity
+            android:name=".LevelThreeItems"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".LevelTwoItems"
+                    android:parentActivityName=".MainActivity"/>
         <activity android:name=".LevelPrompt" />
-        <activity android:name=".LevelOneItems" />
+        <activity android:name=".LevelOneItems"
+                    android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

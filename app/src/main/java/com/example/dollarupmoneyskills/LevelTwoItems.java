@@ -216,6 +216,11 @@ public class LevelTwoItems extends AppCompatActivity {
         intent.putExtra("key", item.getUriString()+","+item.genPrice());
         startActivity(intent);
     }
+    //Method to control what the android back button does
+    public void onBackPressed(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 
 
 

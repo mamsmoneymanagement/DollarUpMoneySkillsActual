@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Log.v("myTag", "Danush");
     }
+
+    //Methods to go to different activties from this activity
     public void goToLevelOne(View view){
         Intent intent = new Intent(this, LevelOneItems.class);
         startActivity(intent);

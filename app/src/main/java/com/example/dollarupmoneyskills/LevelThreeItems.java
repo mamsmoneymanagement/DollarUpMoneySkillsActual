@@ -29,6 +29,8 @@ public class LevelThreeItems extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level_three_items);
 
+        readItemData();
+
         //Setting all the required fields of the RecyclerView object
         recyclerView = findViewById(R.id.myRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -75,6 +77,11 @@ public class LevelThreeItems extends AppCompatActivity {
         }
         //sending an intent with the item data into the next activity
         intent.putExtra("key", item.getImageID()+","+item.genPrice());
+        startActivity(intent);
+    }
+    //Method to control what the android back button does
+    public void onBackPressed(){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

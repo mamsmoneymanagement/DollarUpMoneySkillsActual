@@ -108,7 +108,7 @@ public class LevelPromptHard extends AppCompatActivity {
     /*
     Method to add or remove a $1 bill from the payment
      */
-    public void addOne(View view){
+    public void changeOne(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
@@ -149,7 +149,7 @@ public class LevelPromptHard extends AppCompatActivity {
     /*
     Method to add or remove a $5 bill from the payment
      */
-    public void addFive(View view){
+    public void changeFive(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
@@ -189,7 +189,7 @@ public class LevelPromptHard extends AppCompatActivity {
     /*
     Method to add or remove a $10 bill from the payment
      */
-    public void addTen(View view){
+    public void changeTen(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")
@@ -229,7 +229,7 @@ public class LevelPromptHard extends AppCompatActivity {
     /*
     Method to add or remove a $20 bill from the payment
      */
-    public void addTwenty(View view){
+    public void changeTwenty(View view){
         //Creation of dialog prompt
         final AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirm Choice")

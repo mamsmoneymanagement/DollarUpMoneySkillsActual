@@ -2,6 +2,11 @@ package com.example.dollarupmoneyskills;
 
 import java.util.ArrayList;
 
+
+/*
+Class for the PaymentBoard object.
+This object is used to store the bills the
+ */
 public class PaymentBoard {
     private int numOnes;
     private int numFives;

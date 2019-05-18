@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:contentDescription="@string/dollarBtnDesc"
-                    android:onClick="addOne"
+                    android:onClick="changeOne"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/onedollarbutton" />
 
@@ -94,7 +94,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:contentDescription="@string/dollarBtnDesc"
-                    android:onClick="addFive"
+                    android:onClick="changeFive"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/fivedollarbutton" />
             </LinearLayout>
@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:contentDescription="@string/dollarBtnDesc"
-                    android:onClick="addTen"
+                    android:onClick="changeTen"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/tendollarbutton" />
 
@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:contentDescription="@string/dollarBtnDesc"
-                    android:onClick="addTwenty"
+                    android:onClick="changeTwenty"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/twentydollarbutton" />
             </LinearLayout>

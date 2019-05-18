@@ -40,9 +40,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
 
     private ArrayList<Item> itemList; //list of items put into recyclerview
 
+    //constructor for adapter object that takes in an Item arraylist
     public RecyclerViewAdapter(ArrayList<Item> itemList){
         this.itemList = itemList;
     }
+
+    //method to create view holder for recyclerview
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
