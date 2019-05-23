@@ -305,8 +305,8 @@ public class LevelPromptHard extends AppCompatActivity {
                 //If the user gets the wrong number, they are prompted to try again
                 else{
                     new AlertDialog.Builder(dialog.getContext())
-                            .setTitle("Horrible")
-                            .setMessage("Wrong")
+                            .setTitle("Hmmm...")
+                            .setMessage("You're on the right track, but not there yet.")
                             .setPositiveButton("Try Again", null).create().show();
                 }
             }

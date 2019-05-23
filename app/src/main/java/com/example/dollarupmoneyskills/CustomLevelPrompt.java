@@ -298,8 +298,8 @@ public class CustomLevelPrompt extends AppCompatActivity {
                 //If user get the wrong answer for the payment of the item
                 else{
                     new AlertDialog.Builder(dialogBox.getContext())
-                            .setTitle("Horrible")
-                            .setMessage("Wrong")
+                            .setTitle("Hmmm...")
+                            .setMessage("You're on the right track, but not there yet.")
                             .setPositiveButton("Try Again", null).create().show();
                 }
             }
